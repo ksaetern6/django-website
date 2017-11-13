@@ -7,22 +7,21 @@
      <!-- <link rel="stylesheet" href="{% static "css/foundation/foundation.css" %}"> -->
      <!-- <link rel="stylesheet" href="{% static "css/foundation/app.css" %}"> -->
      <!-- Bootstrap -->
-      <link rel="stylesheet" href="{% static "css/bootstrap/bootstrap.css" %}">
-      <link rel="stylesheet" href="{% static "css/bootstrap/bootstrap.min.css" %}">
+      <link rel="stylesheet" href="{% static "css/bootstrap/bootstrap.css" %}"/>
+      <link rel="stylesheet" href="{% static "css/bootstrap/bootstrap.min.css" %}"/>
+      <!-- wheel -->
+      <link rel="stylesheet" href="{% static "css/wheel.css" %}"/>
       <!--{% block head %}{% endblock %} -->
   </head>
 
-  <body>
+  <body onload="test()">
 
     {% block content %}{% endblock %}
      <!-- <script src="{% static "js/foundation/vendor/jquery.js"% }"></script> -->
      <!-- <script src="{% static "js/foundation/vendor/what-input.js"% }"></script> -->
      <!-- <script src="{% static "js/foundation/vendor/foundation.js"% }"></script> -->
      <!-- <script src="{% static "js/foundation/app.js"% }"></script> -->
-      <script src="{% static "js/jquery-3.2.1.min.js"% }"></script>
-      <script src="{% static "js/bootstrap/bootstrap.js"% }"></script>
-      <script src="{% static "js/bootstrap/bootstrap.min.js"% }"></script>
-    {% block scripts %}{% endblock %}
+     {% block scripts %}{% endblock %}
 
   </body>
 

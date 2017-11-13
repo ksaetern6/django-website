@@ -8,4 +8,5 @@ def index(request):
     return render(request,"default.html",context)
 
 def restaurant(request):
+    context = {"variable":"restaurant name"}
     return render(request, "restaurant.html", context)

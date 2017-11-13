@@ -3,27 +3,30 @@ body {
 }
 #spinner {
     position:absolute;
-    height: 300px;
-    width: 300px;
+    height: 400px;
+    width: 400px;
 }
 #spinner-button {
     cursor:pointer;
     z-index:100;
     width:20%;
     height:20%;
-    position: absolute;
-    left: 40%;
-    top: 40%;
+    position:absolute;
+    left: 230%;
+    top: 100%;
     background-image:url('http://quizpop.herokuapp.com/images/spinner.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
 }
 #spinner-wheel {
-    height:inherit;
-    width:inherit;
+    height:100%;
+    width:100%;
     z-index:0;
-    position:center;
+    position: absolute;
+    margin: auto;
+    left: 190%;
+    top: 60%;
     background-image:url('http://quizpop.herokuapp.com/images/wheel.png');
     background-size: cover;
     background-repeat: no-repeat;

@@ -1,6 +1,6 @@
 YUM WHEEL WEBSITE
 
-created by: Ken Saetern
+created by: Ken Saetern and Molly Dant
 
 TABLE OF CONTENTS
 
@@ -14,12 +14,12 @@ Git Tutorial:
 
 ADD FILES TO GIT:
 
-git add -A //adds all files 
+git add -A //adds all files
 
 git status //checks the files being commited
 
 git pull origin master //pulls any updated files from origin master to your computer in case somebody else edited any.
 
-git commit -m "message here" // commit the files 
+git commit -m "message here" // commit the files
 
 git push //push files to github

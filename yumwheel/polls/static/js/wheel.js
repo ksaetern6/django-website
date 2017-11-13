@@ -14,6 +14,7 @@ app.components.Spinner = function (wheel, button, ops) {
         timeout: 2000,
         onStop: function(degrees){
             clicker.rotate(0);
+            window.location = "/restaurant/";
         },
         onRotate: function (degrees) {
             clicker.rotate((degrees % 360 % (slices * 2)) + (360 - slices));

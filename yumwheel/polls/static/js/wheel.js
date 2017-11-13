@@ -1,65 +1,149 @@
-//set default degree (360*5)
-var degree = 1800;
-//number of clicks = 0
-var clicks = 0;
+app = {
+    components: {}
+};
 
-$(document).ready(function(){
+app.components.Spinner = function (wheel, button, ops) {
+    //set options and defaults
+    ops = ops ? ops : {};
+    var onStop = ops.onStop ? ops.onStop : function () {};
+    var destination = ops.destination;
+    var slices = ops.slices;
 
-	/*WHEEL SPIN FUNCTION*/
-	$('#spin').click(function(){
+    var clicker = new app.components.Wheel(button);
+    var spinner = new app.components.Wheel(wheel, {
+        timeout: 2000,
+        onStop: function(degrees){
+            clicker.rotate(0);
+        },
+        onRotate: function (degrees) {
+            clicker.rotate((degrees % 360 % (slices * 2)) + (360 - slices));
+        }
+    });
 
-		//add 1 every click
-		clicks ++;
+    this.reset = function () {
+        spinner.rotate(0);
+    };
 
-		/*multiply the degree by number of clicks
-	  generate random number between 1 - 360,
-    then add to the new degree*/
-		var newDegree = degree*clicks;
-		var extraDegree = Math.floor(Math.random() * (360 - 1 + 1)) + 1;
-		totalDegree = newDegree+extraDegree;
+    this.setDestination = function (degrees) {
+        stopAt = degrees;
+    };
 
-		/*let's make the spin btn to tilt every
-		time the edge of the section hits
-		the indicator*/
-		$('#wheel .sec').each(function(){
-			var t = $(this);
-			var noY = 0;
+    button.addEventListener("click", function () {
+        if (!spinner.isAccelerating() && !spinner.isStopping()) {
+            spinner.start();
 
-			var c = 0;
-			var n = 700;
-			var interval = setInterval(function () {
-				c++;
-				if (c === n) {
-					clearInterval(interval);
-				}
+            window.setTimeout(function () {
+                spinner.stop(destination);
+            }, 4000);
+        }
+    });
 
-				var aoY = t.offset().top;
-				$("#txt").html(aoY);
-				console.log(aoY);
+    this.clicker = clicker;
+    this.spinner = spinner;
+};
 
-				/*23.7 is the minumum offset number that
-				each section can get, in a 30 angle degree.
-				So, if the offset reaches 23.7, then we know
-				that it has a 30 degree angle and therefore,
-				exactly aligned with the spin btn*/
-				if(aoY < 23.89){
-					console.log('<<<<<<<<');
-					$('#spin').addClass('spin');
-					setTimeout(function () {
-						$('#spin').removeClass('spin');
-					}, 100);
-				}
-			}, 10);
+app.components.Wheel = function (target, ops) {
+    //set options and defaults
+    ops = ops ? ops : {};
+    var timeout = ops.timeout;
+    var acceleration = ops.accelerationDelay ? ops.accelerationDelay : 100;
+    var onRotateListener = ops.onRotate ? ops.onRotate : function () {};
+    var onStopListener = ops.onStop ? ops.onStop : function () {};
+    var increment = ops.increment ? ops.increment : 1;
+    var delay = ops.delay ? ops.delay : 10;
 
-			$('#inner-wheel').css({
-				'transform' : 'rotate(' + totalDegree + 'deg)'
-			});
+    var state = {
+        accelerating: false,
+        stopping: false,
+        destination: null,
+        degrees: 0
+    };
 
-			noY = t.offset().top;
+    var intervals = {
+        accelerater: null,
+        decelerater: null,
+        spinner: []
+    };
 
-		});
-		if(totalDegree == 0){
-			window.location = "/restaurant/";
-		}
-	});
-});//DOCUMENT READY
+    var rotate = function (deg) {
+        target.style.webkitTransform = 'rotate(' + deg + 'deg)';
+        target.style.mozTransform = 'rotate(' + deg + 'deg)';
+        target.style.msTransform = 'rotate(' + deg + 'deg)';
+        target.style.oTransform = 'rotate(' + deg + 'deg)';
+        target.style.transform = 'rotate(' + deg + 'deg)';
+        state.degrees = deg;
+        onRotateListener.apply(this, [deg]);
+    };
+
+    var spin = function (speed) {
+        intervals.spinner.push(window.setInterval(function () {
+            rotate((state.degrees + speed) % 360);
+
+            if (state.destination !== null && intervals.spinner.length == 1) {
+                if (state.degrees == state.destination) {
+                    window.clearInterval(intervals.spinner.pop());
+                    state.destination = null;
+                    state.stopping = false;
+                    onStopListener.apply(this, [state]);
+                }
+            }
+        }, delay));
+    };
+
+    var accelerate = function () {
+        state.accelerating = true;
+        intervals.accelerater = window.setInterval(spin.bind(this, increment), acceleration);
+
+        if (timeout > 0) {
+            window.setTimeout(function () {
+                window.clearInterval(intervals.accelerater);
+                state.accelerating = false;
+            }, timeout);
+        }
+    };
+
+    var decelerate = function (to) {
+        state.stopping = true;
+        state.accelerating = false;
+        window.clearInterval(intervals.accelerater);
+        var slowDown = function () {
+            if (intervals.spinner.length > 1) {
+                window.clearInterval(intervals.spinner.pop());
+            } else {
+                window.clearInterval(intervals.decelerater);
+
+                if (to || to === 0) {
+                    state.destination = to;
+                } else {
+                    window.clearInterval(intervals.spinner.pop());
+                    state.stopping = false;
+                    onStopListener.apply(this, [state]);
+                }
+            }
+        };
+
+        intervals.decelerater = window.setInterval(slowDown, acceleration);
+    };
+
+    //expose
+    this.isAccelerating = function () {
+        return state.accelerating;
+    };
+    this.isStopping = function () {
+        return state.stopping;
+    };
+    this.start = accelerate;
+    this.stop = decelerate;
+    this.rotate = rotate;
+    this.spin = spin;
+
+};
+
+app.spinner = new app.components.Spinner(
+document.getElementById('spinner-wheel'),
+document.getElementById('spinner-button'), {
+    slices: 7,
+    onStop: function (state) {
+        console.log(state);
+    }
+});

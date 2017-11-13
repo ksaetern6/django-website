@@ -58,8 +58,8 @@ $(document).ready(function(){
 			noY = t.offset().top;
 
 		});
+		if(totalDegree == 0){
+			window.location = "/restaurant/";
+		}
 	});
-
-
-
 });//DOCUMENT READY

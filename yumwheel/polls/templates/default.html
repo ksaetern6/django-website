@@ -20,23 +20,7 @@
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-        role="button" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+        <a class="nav-link" href="/restaurant/">Restaurant</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -45,8 +29,32 @@
     </form>
   </div>
 </nav>
-
 <!-- navigation bar -->
+
+<!-- wheel -->
+<div id="wrapper">
+
+        <div id="wheel">
+            <div id="inner-wheel">
+                <div class="sec"><span class="fa fa-bell-o"></span></div>
+                <div class="sec"><span class="fa fa-comment-o"></span></div>
+                <div class="sec"><span class="fa fa-smile-o"></span></div>
+                <div class="sec"><span class="fa fa-heart-o"></span></div>
+                <div class="sec"><span class="fa fa-star-o"></span></div>
+                <div class="sec"><span class="fa fa-lightbulb-o"></span></div>
+            </div>
+
+            <div id="spin">
+                <div id="inner-spin"></div>
+            </div>
+
+            <div id="shine"></div>
+        </div>
+
+
+        <div id="txt"></div>
+  </div>
+  <!-- wheel -->
  <h1>{{variable}}</h1>
 
 
@@ -54,6 +62,9 @@
 
 
 {% block scripts %}
- <!-- <script src="{% static "js/vendor/vue.js" %}"></script> -->
-<!--  <script src="{% static "js/VueAppEx.js" %}"></script> -->
+<script src="{% static "js/jquery-3.2.1.min.js" %}"></script>
+<script src="{% static "js/wheel.js" %}"></script>
+<script src="{% static "js/bootstrap/bootstrap.js" %}"></script>
+<script src="{% static "js/bootstrap/bootstrap.min.js" %}"></script>
+
 {% endblock %}

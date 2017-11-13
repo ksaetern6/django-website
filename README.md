@@ -1,9 +1,9 @@
-Yum Wheel website
+YUM WHEEL WEBSITE
 
 created by: Ken Saetern
 
-Table of Contents:
+TABLE OF CONTENTS
 
-yumwheel: project name, main project file.
+I. yumwheel: project name, main project file.
 
-polls: first app created.
+II. polls: first app created.

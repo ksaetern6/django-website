@@ -19,7 +19,7 @@ def register(request):
         #if information of user is valid
         if form.is_valid():
             form.save()
-            return(redirect('/'))
+            return(redirect('/login'))
 
     #else we are GETting the website page
     else:

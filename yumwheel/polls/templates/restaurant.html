@@ -3,7 +3,7 @@
 
 {%block title%}The Yum Wheel suggests you eat at...{%endblock%}
 
-
+{% block style %}<link rel="stylesheet" href="{% static "css/default.css" %}"/>{% endblock %}
 {% block content %}
 <style>
 #map{
@@ -21,7 +21,7 @@
 <div style = "text-align:center">
   <a href="/" class="button">Return to YumWheel</a>
   <h1 id="resname"></h1>
-  <h2> is where the YumWheel suggests you eat! </h2>
+  <h2 id="suggest"> is where the YumWheel suggests you eat! </h2>
   <h3 id = "reslink"></h3>
 </div>
 {% endblock %}

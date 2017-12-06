@@ -1,0 +1,6 @@
+body {
+    background-color: rgb(43, 62, 80);
+}
+#resname, #reslink, #suggest{
+ font-family: Helvetica;
+}

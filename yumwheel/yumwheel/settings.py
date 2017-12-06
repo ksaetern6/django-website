@@ -124,4 +124,5 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
+#after a successful authentication LOGIN goes home.
 LOGIN_REDIRECT_URL = '/'

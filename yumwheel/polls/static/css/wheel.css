@@ -27,7 +27,7 @@ body {
     margin: auto;
     left: 190%;
     top: 60%;
-    background-image:url('http://quizpop.herokuapp.com/images/wheel.png');
+    background-image:url('wheel/wheel.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;

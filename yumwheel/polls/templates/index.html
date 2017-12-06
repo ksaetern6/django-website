@@ -9,17 +9,43 @@
      <!-- Bootstrap -->
       <link rel="stylesheet" href="{% static "css/bootstrap/bootstrap.css" %}"/>
       <link rel="stylesheet" href="{% static "css/bootstrap/bootstrap.min.css" %}"/>
-      <!-- wheel -->
-      <link rel="stylesheet" href="{% static "css/wheel.css" %}"/>
-      <!--{% block head %}{% endblock %} -->
+      {% block style %}{% endblock %}
   </head>
 
   <body>
-
-    {% block navbar %}{% endblock %}
+    <!-- navigation bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">YumWheel</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Sign In</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/register">Create Account</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- navigation bar -->
+    {% block body %}{% endblock %}
     {% block content %}{% endblock %}
     {% block scripts %}{% endblock %}
 
+    <!--  bootstrap -->
+    <script src="{% static "js/jquery-3.2.1.min.js" %}"></script>
+    <script src="{% static "js/wheel.js" %}"></script>
+    <script src="{% static "js/bootstrap/bootstrap.js" %}"></script>
+    <script src="{% static "js/bootstrap/bootstrap.min.js" %}"></script>
+
+    <!-- foundation -->
+    <script src="{% static "js/foundation/vendor/jquery.js" %}"></script>
+    <script src="{% static "js/foundation/vendor/what-input.js" %}"></script>
+    <script src="{% static "js/foundation/vendor/foundation.js" %}"></script>
+    <script src="{% static "js/foundation/app.js" %}"></script>
   </body>
 
 </html>

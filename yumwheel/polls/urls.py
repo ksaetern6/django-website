@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^login/$', login, {'template_name': 'login.html'}),
     url(r'restaurant/$', views.restaurant, name ='restaurant'),
+    url(r'register/$', views.register, name ='register'),
 ]

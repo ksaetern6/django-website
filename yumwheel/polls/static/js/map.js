@@ -22,6 +22,7 @@ var pos
     if(status == google.maps.places.PlacesServiceStatus.OK){
       var rndnum = Math.floor(Math.random() * results.length);
       var place = results[rndnum];
+      document.getElementById("resname").innerHTML = place.name;
       createMarker(results[rndnum]);
     }
   }

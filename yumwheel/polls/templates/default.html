@@ -20,10 +20,7 @@
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    <button type="button" class="btn btn-default navbar-btn">Sign in</button>
   </div>
 </nav>
 <!-- navigation bar -->
@@ -41,9 +38,15 @@
 
 
 {% block scripts %}
+<!--  bootstrap -->
 <script src="{% static "js/jquery-3.2.1.min.js" %}"></script>
 <script src="{% static "js/wheel.js" %}"></script>
 <script src="{% static "js/bootstrap/bootstrap.js" %}"></script>
 <script src="{% static "js/bootstrap/bootstrap.min.js" %}"></script>
 
+<!-- foundation -->
+<script src="{% static "js/foundation/vendor/jquery.js" %}"></script>
+<script src="{% static "js/foundation/vendor/what-input.js" %}"></script>
+<script src="{% static "js/foundation/vendor/foundation.js" %}"></script>
+<script src="{% static "js/foundation/app.js" %}"></script>
 {% endblock %}

@@ -23,6 +23,8 @@ var pos
       var rndnum = Math.floor(Math.random() * results.length);
       var place = results[rndnum];
       document.getElementById("resname").innerHTML = place.name;
+      var link = "<a href = 'https://wwww.google.com/maps/place?" + place.name +"'> Restaurant Information</a>";
+      document.getElementById("reslink").innerHTML = link;
       createMarker(results[rndnum]);
     }
   }

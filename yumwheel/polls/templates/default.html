@@ -6,10 +6,15 @@
 
 {% block style %}
 <link rel="stylesheet" href="{% static "css/wheel.css" %}"/>
+<link rel="stylesheet" href="{% static "css/default.css" %}"/>
 {% endblock %}
 
 
 {% block body %}
+<div style = "text-align:center" class="main">
+  <h1> Welcome to the YumWheel!</h1>
+  <p> Click the wheel to get a suggestion </p>
+</div>
 <!-- wheel -->
 <div id="spinner">
     <div id="spinner-wheel"></div>

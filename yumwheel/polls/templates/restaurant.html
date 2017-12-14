@@ -1,9 +1,12 @@
 {%extends "index.html"%}
 {%load static %}
 
-{%block title%}The Yum Wheel suggests you eat at...{%endblock%}
+{%block title%}The YumWheel suggests you eat at...{%endblock%}
 
-{% block style %}<link rel="stylesheet" href="{% static "css/default.css" %}"/>{% endblock %}
+{% block style %}
+<link rel="stylesheet" href="{% static "css/default.css" %}"/>
+{% endblock %}
+
 {% block content %}
 <style>
 #map{
@@ -14,14 +17,14 @@
 </style>
 <!-- size of map -->
 
-<div id = "map"></div>
-
 <script src="{% static "js/map.js" %}"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACc6IrDW1i_Pee4QSl59bySwB0Bq75KdM&libraries=places&callback=initMap"></script>
-<div style = "text-align:center">
-  <a href="/" class="button">Return to YumWheel</a>
+<div style = "text-align:center" class= "main">
   <h1 id="resname"></h1>
   <h2 id="suggest"> is where the YumWheel suggests you eat! </h2>
+</div>
+<div id = "map"></div>
+<div style = "text-align:center" class= "main">
   <h3 id = "reslink"></h3>
 </div>
 {% endblock %}

@@ -4,3 +4,11 @@ body {
 #resname, #reslink, #suggest{
  font-family: Helvetica;
 }
+
+div.main{
+  color: black;
+  font-weight: bold;
+  background: cadetblue;
+  border: 2px solid black;
+  padding: 1em;
+}
